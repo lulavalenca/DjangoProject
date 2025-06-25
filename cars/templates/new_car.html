@@ -12,38 +12,38 @@
 
     <div class="form-group">
       <label for="id_model">Modelo</label>
-      {{ new_car_form.model|add_class:"form-control" }}
+      {{ form.model|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_brand">Marca</label>
-      {{ new_car_form.brand|add_class:"form-control" }}
+      {{ form.brand|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_factory_year">Ano de Fabricação</label>
-      {{ new_car_form.factory_year|add_class:"form-control" }}
+      {{ form.factory_year|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_model_year">Ano do Modelo</label>
-      {{ new_car_form.model_year|add_class:"form-control" }}
+      {{ form.model_year|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_plate">Placa</label>
-      {{ new_car_form.plate|add_class:"form-control" }}
+      {{ form.plate|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_value">Valor (R$)</label>
-      {{ new_car_form.value|add_class:"form-control" }}
+      {{ form.value|add_class:"form-control" }}
     </div>
 
     <div class="form-group">
       <label for="id_photo">Foto do Veículo</label>
       <div class="file-upload">
-        {{ new_car_form.photo }}
+        {{ form.photo }}
         <div class="file-button">ESCOLHER ARQUIVO</div>
         <span class="file-name">Nenhum arquivo selecionado</span>
       </div>
