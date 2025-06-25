@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+<style>
+  .car-detail-card {
+    background-color: var(--card);
+    color: var(--light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .car-detail-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .car-detail-card h2 {
+    font-size: 2rem;
+    color: var(--yellow);
+    margin-bottom: 1rem;
+  }
+
+  .car-detail-card p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    text-decoration: none;
+    background: transparent;
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+
+  .back-link:hover {
+    background: var(--yellow);
+    color: black;
+  }
+</style>
+
+<div class="car-detail-card">
+  {% if object.photo %}
+    <img src="{{ object.photo.url }}" alt="{{ object.model }} - {{ object.brand }}">
+  {% else %}
+    <img src="https://via.placeholder.com/600x280?text=Sem+Imagem" alt="Sem imagem disponível">
+  {% endif %}
+
+  <h2>{{ object.brand }} {{ object.model }}</h2>
+  <p><strong>Ano de fabricação:</strong> {{ object.factory_year }}</p>
+  <p><strong>Ano do modelo:</strong> {{ object.model_year }}</p>
+  <p><strong>Placa:</strong> {{ object.plate }}</p>
+  <p><strong>Preço:</strong> R$ {{ object.value|floatformat:2|intcomma }}</p>
+
+  <a href="{% url 'cars_list' %}" class="back-link">
+    <i class="fas fa-arrow-left"></i> Voltar
+  </a>
+</div>
+{% endblock %}
