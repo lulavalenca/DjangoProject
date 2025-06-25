@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{% block title %}CarFuture Shop{% endblock %}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
+    /* === VARIÁVEIS DE TEMA === */
     :root {
       --dark: #121212;
       --gray: #424242;
@@ -25,6 +26,7 @@
       --card: #e0e0e0;
     }
 
+    /* === RESET E BASE === */
     * {
       margin: 0;
       padding: 0;
@@ -41,6 +43,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
+    /* === HEADER E NAVEGAÇÃO === */
     header {
       background-color: var(--gray);
     }
@@ -105,7 +108,7 @@
       left: 0;
       background-color: var(--gray);
       border-radius: 6px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
       min-width: 180px;
       z-index: 10;
     }
@@ -152,6 +155,7 @@
       }
     }
 
+    /* === CONTEÚDO E FOOTER === */
     main {
       flex: 1;
       padding: 2rem;
@@ -164,14 +168,14 @@
       padding: 1.5rem;
     }
 
-    /* Formulários */
+    /* === FORMULÁRIOS E COMPONENTES === */
     .form-container {
       max-width: 600px;
       margin: 0 auto;
       background: var(--card);
       border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
     }
 
     .form-title {
@@ -260,8 +264,8 @@
     }
   </style>
 </head>
-<body>
 
+<body data-theme="dark">
   <header>
     <div class="nav-container">
       <div class="logo">CarFuture</div>
@@ -275,7 +279,7 @@
 
         {% if user.is_authenticated %}
           <li class="dropdown">
-            <a href="#" class="dropbtn"><i class="fas fa-user"></i> {{ user.username }} <i class="fas fa-caret-down"></i></a>
+            <a href="#"><i class="fas fa-user"></i> {{ user.username }} <i class="fas fa-caret-down"></i></a>
             <ul class="dropdown-content">
               <li><a href="{% url 'new_car' %}"><i class="fas fa-plus-circle"></i> Cadastrar Carro</a></li>
               <li><a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
@@ -303,12 +307,10 @@
       menu.classList.toggle("active");
     }
 
-    // Modo claro/escuro
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      document.body.setAttribute("data-theme", savedTheme);
-      document.getElementById("theme-icon").textContent = savedTheme === "light" ? "🌙" : "☀️";
-    }
+    // Controle de tema com persistência
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.body.setAttribute("data-theme", savedTheme);
+    document.getElementById("theme-icon").textContent = savedTheme === "light" ? "🌙" : "☀️";
 
     function toggleTheme() {
       const current = document.body.getAttribute("data-theme");
