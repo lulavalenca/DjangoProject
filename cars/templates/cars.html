@@ -198,7 +198,7 @@
           <div class="car-card">
             {% if car.photo %}
               <img src="{{ car.photo.url }}" alt="{{ car.model }} - {{ car.brand }}">
-            {% else %}
+            {% else %}   
               <img src="{% static 'images/placeholder-car.jpg' %}" alt="Imagem não disponível">
             {% endif %}
             <h2>{{ car.brand }} {{ car.model }}</h2>
